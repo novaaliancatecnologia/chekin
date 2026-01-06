@@ -1,38 +1,47 @@
-{% extends 'base.html' %}
-{% block title %}Check-in{% endblock %}
+{% extends "base.html" %}
+{% block title %}Check-in Nova Aliança{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
+<h1>Check-in Nova Aliança</h1>
 
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h4 class="card-title mb-3">Registrar Check-in</h4>
+<form method="POST">
+    <label>Nome:</label>
+    <input type="text" name="nome" placeholder="Digite seu nome" required>
 
-                {% if mensagem %}
-                    <div class="alert alert-success">{{ mensagem }}</div>
-                {% endif %}
+    <label>Tipo:</label>
+    <select name="tipo" id="tipo" onchange="toggleFields()" required>
+        <option value="">Selecione</option>
+        <option value="Visitante">Visitante</option>
+        <option value="Voluntário">Voluntário</option>
+        <option value="Obreiro(a)">Obreiro(a)</option>
+    </select>
 
-                <form method="post">
-                    <div class="mb-3">
-                        <label class="form-label">Nome</label>
-                        <input type="text" name="nome" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Tipo</label>
-                        <select name="tipo" class="form-select" required>
-                            <option value="Aluno">Aluno</option>
-                            <option value="Visitante">Visitante</option>
-                        </select>
-                    </div>
-
-                    <button class="btn btn-primary w-100">Registrar</button>
-                </form>
-
-            </div>
-        </div>
-
+    <div id="ministérioDiv" style="display:none;">
+        <label>ministério (Voluntário):</label>
+        <input type="text" name="ministério" placeholder="Digite o ministério">
     </div>
-</div>
+
+    <div id="diaDiv" style="display:none;">
+        <label>Dia da Semana (Visitante):</label>
+        <select name="dia_semana">
+            <option value="Domingo">Domingo</option>
+            <option value="Segunda">Segunda</option>
+            <option value="Terça">Terça</option>
+            <option value="Quarta">Quarta</option>
+            <option value="Quinta">Quinta</option>
+            <option value="Sexta">Sexta</option>
+            <option value="Sábado">Sábado</option>
+        </select>
+    </div>
+
+    <button type="submit">Registrar</button>
+</form>
+
+<script>
+function toggleFields() {
+    var tipo = document.getElementById('tipo').value;
+    document.getElementById('ministérioDiv').style.display = (tipo == 'Voluntário') ? 'block' : 'none';
+    document.getElementById('diaDiv').style.display = (tipo == 'Visitante') ? 'block' : 'none';
+}
+</script>
 {% endblock %}

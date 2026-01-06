@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Check-in</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>Escaneie para fazer check-in</h1>
+{% block title %}QR Code{% endblock %}
 
-<img src="{{ url_for('static', filename='qrcode.png') }}">
+{% block content %}
+<h1>QR Code</h1>
+<p>Este QR pode ser usado para check-in rápido.</p>
+<img src="{{ url_for('static', filename='qrcode.png') }}" alt="QR Code" style="display:block; margin:0 auto;">
+<a href="{{ url_for('admin') }}">Voltar</a>
+{% endblock %}
 
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h2>QR Code</h2>
+<img src="{{ url_for('static', filename='qrcode.png') }}" alt="QR Code">
+{% endblock %}

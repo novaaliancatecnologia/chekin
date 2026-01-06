@@ -1,72 +1,72 @@
-body {
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Corpo da página com degradê */
+html, body {
+    height: 100%;
     font-family: Arial, sans-serif;
-    margin: 30px;
-}
-
-h1 {
-    color: #333;
-}
-
-nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th {
-    background-color: #f0f0f0;
-}
-.cards {
+    background: linear-gradient(135deg, #2ecc71, #1abc9c);
     display: flex;
-    gap: 20px;
-    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
 }
 
-.card {
-    background: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
-    width: 200px;
+/* Container centralizado */
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 500px;
+}
+
+/* Cabeçalho */
+h1, h2 {
     text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
-.card h2 {
-    margin-bottom: 10px;
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-.card p {
-    font-size: 28px;
+input, select, button {
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Botão */
+button {
+    background: #16a085;
+    color: white;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-canvas {
-    max-width: 400px;
-    margin-top: 30px;
+button:hover {
+    background: #1abc9c;
 }
 
-@media (max-width: 768px) {
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-    }
-
-    table {
-        font-size: 14px;
-    }
-
-    nav a {
-        display: block;
-        margin-bottom: 10px;
-    }
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+    font-size: 14px;
 }
-

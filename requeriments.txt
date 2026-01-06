@@ -1,6 +1,0 @@
-Flask
-pandas
-qrcode[pil]
-python-dotenv
-werkzeug
-gunicorn
