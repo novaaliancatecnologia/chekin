@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<h1>Painel Administrativo</h1>
+
+<nav>
+    <a href="{{ url_for('admin.relatorios') }}">📊 Relatórios</a>
+    <a href="{{ url_for('admin.logout') }}">🚪 Sair</a>
+</nav>
+
+<hr>
+
+<div class="cards">
+    <div class="card">
+        <h2>Total</h2>
+        <p>{{ total }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Visitantes</h2>
+        <p>{{ visitantes }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Membros</h2>
+        <p>{{ membros }}</p>
+    </div>
+</div>
+
+</body>
+
+</html>
+
+<h2>Resumo Visual</h2>
+
+<canvas id="graficoTipos" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('graficoTipos').getContext('2d');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{ grafico_labels | tojson }},
+        datasets: [{
+            data: {{ grafico_valores | tojson }},
+            backgroundColor: ['#36A2EB', '#4CAF50']
+        }]
+    }
+});
+</script>
